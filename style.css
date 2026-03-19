@@ -270,6 +270,13 @@ a {
   margin-bottom: 1.7rem;
 }
 
+.section-lead {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
 .section h2 {
   font-size: clamp(2.6rem, 4vw, 4.2rem);
 }
@@ -318,13 +325,20 @@ a {
 .feature-card p,
 .episode-card p,
 .character-card p,
-.spotlight-card p {
+.spotlight-card p,
+.detail-card p {
   margin: 0;
   color: var(--muted);
 }
 
 .story-card p + p {
   margin-top: 1rem;
+}
+
+.long-card p + p,
+.episode-card p + p,
+.detail-card p + p {
+  margin-top: 0.95rem;
 }
 
 .feature-card h3 {
@@ -344,17 +358,23 @@ a {
 
 .episode-grid,
 .character-grid,
-.roadmap-grid {
+.roadmap-grid,
+.detail-grid {
   display: grid;
   gap: 1rem;
 }
 
 .episode-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .character-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 1rem;
 }
 
 .roadmap-grid {
@@ -362,10 +382,19 @@ a {
 }
 
 .episode-card h3,
-.character-card h3 {
+.character-card h3,
+.detail-card h3 {
   margin-top: 0.55rem;
   margin-bottom: 0.85rem;
   font-size: 2rem;
+}
+
+.episode-status {
+  margin-top: 0.55rem;
+  color: #f5c6c6;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .tag,
@@ -383,6 +412,14 @@ a {
     linear-gradient(135deg, rgba(117, 12, 20, 0.2), transparent 42%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
     var(--panel-strong);
+}
+
+.detail-card {
+  padding: 1.8rem;
+}
+
+.detail-summary {
+  margin-top: 0.6rem;
 }
 
 .gallery-grid {
@@ -455,6 +492,7 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .detail-grid,
   .roadmap-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -481,6 +519,7 @@ a {
 
   .two-column,
   .character-grid,
+  .detail-grid,
   .roadmap-grid {
     grid-template-columns: 1fr;
   }
