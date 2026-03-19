@@ -8,7 +8,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 body.classList.add("is-loading");
 
 const heroRevealElements = Array.from(
-  document.querySelectorAll(".hero .eyebrow, .hero h1, .hero-copy, .hero-actions, .hero-facts li")
+  document.querySelectorAll(".hero .eyebrow, .hero h1, .hero-copy, .hero-stage, .hero-actions, .hero-facts li")
 );
 
 const registerReveal = (elements, direction = "up", step = 0) =>
@@ -141,6 +141,26 @@ if (hero && !prefersReducedMotion.matches) {
   });
 
   hero.addEventListener("pointerleave", resetHeroShift);
+}
+
+const tiltElements = Array.from(document.querySelectorAll("[data-tilt]"));
+
+if (!prefersReducedMotion.matches) {
+  tiltElements.forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+      const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+      element.style.setProperty("--tilt-x", `${offsetY * -7}deg`);
+      element.style.setProperty("--tilt-y", `${offsetX * 9}deg`);
+    });
+
+    element.addEventListener("pointerleave", () => {
+      element.style.setProperty("--tilt-x", "0deg");
+      element.style.setProperty("--tilt-y", "0deg");
+    });
+  });
 }
 
 const lightbox = document.getElementById("gallery-lightbox");
