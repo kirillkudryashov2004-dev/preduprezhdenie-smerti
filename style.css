@@ -202,11 +202,162 @@ a {
   text-wrap: balance;
 }
 
+.hero-title {
+  position: relative;
+  display: grid;
+  gap: 0.02em;
+}
+
+.hero-title::after {
+  content: "";
+  width: min(42vw, 340px);
+  height: 1px;
+  margin-top: 0.35rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 229, 229, 0.92), rgba(217, 77, 77, 0));
+  box-shadow: 0 0 18px rgba(217, 77, 77, 0.48);
+  animation: titleSweep 6.4s ease-in-out infinite;
+}
+
+.title-word {
+  display: block;
+  width: fit-content;
+  text-shadow:
+    0 0 24px rgba(217, 77, 77, 0.18),
+    0 0 64px rgba(217, 77, 77, 0.08);
+  animation:
+    titleDrift 7.5s ease-in-out infinite,
+    titlePulseGlow 6.2s ease-in-out infinite;
+}
+
+.title-word-accent {
+  margin-left: clamp(0.7rem, 2vw, 1.8rem);
+  color: #fff1eb;
+  text-shadow:
+    0 0 18px rgba(255, 219, 219, 0.32),
+    0 0 54px rgba(217, 77, 77, 0.24);
+  animation-delay: 0.7s;
+}
+
 .hero-copy {
   max-width: 700px;
   margin: 1.4rem 0 0;
   font-size: clamp(1.05rem, 1.4vw, 1.22rem);
   color: rgba(243, 239, 231, 0.84);
+}
+
+.hero-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.22fr 0.92fr;
+  grid-template-rows: repeat(2, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 960px;
+  margin-top: 2.1rem;
+  perspective: 1200px;
+}
+
+.hero-stage-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  filter: blur(55px);
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.hero-stage-glow-left {
+  top: 5%;
+  left: -4%;
+  background: rgba(217, 77, 77, 0.18);
+}
+
+.hero-stage-glow-right {
+  right: 6%;
+  bottom: 10%;
+  background: rgba(255, 230, 230, 0.1);
+}
+
+.hero-shot {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shot-lift: 0px;
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  background: rgba(8, 10, 14, 0.78);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+  transform:
+    perspective(1200px)
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y))
+    translate3d(0, var(--shot-lift), 0);
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.hero-shot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 9, 13, 0.04), rgba(7, 9, 13, 0.72)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 26%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-shot:hover,
+.hero-shot:focus-within {
+  --shot-lift: -10px;
+  border-color: rgba(217, 77, 77, 0.28);
+  box-shadow: 0 34px 74px rgba(0, 0, 0, 0.5);
+}
+
+.hero-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 900ms cubic-bezier(0.19, 1, 0.22, 1),
+    filter 320ms ease;
+}
+
+.hero-shot:hover img,
+.hero-shot:focus-within img {
+  transform: scale(1.05);
+  filter: contrast(1.05) saturate(1.08);
+}
+
+.hero-shot figcaption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  color: rgba(243, 239, 231, 0.92);
+  background: rgba(7, 9, 13, 0.62);
+  backdrop-filter: blur(12px);
+}
+
+.hero-shot-main {
+  grid-row: 1 / span 2;
+}
+
+.hero-shot-top {
+  transform-origin: center bottom;
+}
+
+.hero-shot-bottom {
+  transform-origin: center top;
 }
 
 .hero-actions {
@@ -378,13 +529,21 @@ a {
   margin-bottom: 1rem;
 }
 
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .roadmap-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .episode-card h3,
 .character-card h3,
-.detail-card h3 {
+.detail-card h3,
+.release-card h3 {
   margin-top: 0.55rem;
   margin-bottom: 0.85rem;
   font-size: 2rem;
@@ -480,6 +639,29 @@ a {
   background:
     linear-gradient(180deg, rgba(150, 20, 20, 0.06), rgba(255, 255, 255, 0)),
     var(--panel);
+}
+
+.release-card {
+  min-height: 220px;
+  padding: 1.8rem;
+}
+
+.release-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.release-card-highlight {
+  background:
+    radial-gradient(circle at top right, rgba(217, 77, 77, 0.2), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    var(--panel-strong);
+}
+
+.release-card-highlight h3 {
+  font-size: clamp(2.9rem, 5vw, 4rem);
+  line-height: 0.88;
+  color: #fff4ef;
 }
 
 .footer {
@@ -880,6 +1062,53 @@ body.is-loading .page-shell {
   }
 }
 
+@keyframes titleDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes titlePulseGlow {
+  0%,
+  100% {
+    opacity: 0.96;
+    filter: brightness(1);
+  }
+
+  45% {
+    opacity: 1;
+    filter: brightness(1.12);
+  }
+
+  47% {
+    opacity: 0.78;
+    filter: brightness(0.92);
+  }
+
+  52% {
+    opacity: 1;
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes titleSweep {
+  0%,
+  100% {
+    transform: scaleX(0.65);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -903,11 +1132,16 @@ body.is-loading .page-shell {
 }
 
 @media (max-width: 1100px) {
+  .hero-stage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .episode-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .detail-grid,
+  .release-grid,
   .roadmap-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -932,9 +1166,20 @@ body.is-loading .page-shell {
     justify-content: flex-start;
   }
 
+  .hero-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .hero-shot-main {
+    grid-row: auto;
+    min-height: 320px;
+  }
+
   .two-column,
   .character-grid,
   .detail-grid,
+  .release-grid,
   .roadmap-grid {
     grid-template-columns: 1fr;
   }
@@ -957,6 +1202,23 @@ body.is-loading .page-shell {
 
   .section {
     padding: 4rem 0;
+  }
+
+  .title-word-accent {
+    margin-left: 0;
+  }
+
+  .hero-stage {
+    gap: 0.85rem;
+    margin-top: 1.7rem;
+  }
+
+  .hero-shot {
+    min-height: 220px;
+  }
+
+  .hero-shot figcaption {
+    font-size: 0.95rem;
   }
 
   .episode-grid,
