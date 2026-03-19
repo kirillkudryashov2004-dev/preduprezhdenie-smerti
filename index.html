@@ -54,13 +54,38 @@
 
       <div class="hero-content">
         <p class="eyebrow">Официальный сайт хоррор-игры и хроника разработки</p>
-        <h1>Предупреждение смерти</h1>
+        <h1 class="hero-title" aria-label="Предупреждение смерти">
+          <span class="title-word">Предупреждение</span>
+          <span class="title-word title-word-accent">смерти</span>
+        </h1>
         <p class="hero-copy">
           Это не просто витрина проекта, а живая история того, как идея о
           предчувствии смерти и тревоге перед неизбежным превратилась в
           эпизодическую хоррор-игру. Здесь собраны корни замысла, структура
           сюжета, материалы по миру игры и подробности будущих эпизодов.
         </p>
+
+        <div class="hero-stage" aria-label="Образы игры">
+          <div class="hero-stage-glow hero-stage-glow-left" aria-hidden="true"></div>
+          <div class="hero-stage-glow hero-stage-glow-right" aria-hidden="true"></div>
+
+          <figure class="hero-shot hero-shot-main" data-tilt>
+            <img src="assets/scene-bloody-hallway.png" alt="Кровавый коридор" />
+            <figcaption>
+              Эпизод III. Коридор, в котором страх становится почти физическим.
+            </figcaption>
+          </figure>
+
+          <figure class="hero-shot hero-shot-top" data-tilt>
+            <img src="assets/scene-church.png" alt="Церковь из третьего эпизода" />
+            <figcaption>Ложное чувство безопасности перед самым тяжёлым поворотом.</figcaption>
+          </figure>
+
+          <figure class="hero-shot hero-shot-bottom" data-tilt>
+            <img src="assets/scene-axe-figure.png" alt="Фигура с топором" />
+            <figcaption>Образ угрозы, после которого история уже не возвращается назад.</figcaption>
+          </figure>
+        </div>
 
         <div class="hero-actions">
           <a class="button button-primary" href="#origin">Узнать, как родилась игра</a>
@@ -373,12 +398,57 @@
       <section class="section roadmap-section" id="future">
         <div class="section-heading">
           <p class="eyebrow">Что дальше</p>
-          <h2>Четвёртый эпизод и развитие сайта</h2>
+          <h2>Четвёртый эпизод, релиз и развитие сайта</h2>
           <p class="section-lead">
             После третьего эпизода история входит в фазу последствий. Сайт тоже
             будет развиваться вместе с игрой: не только как страница проекта, но
             как место, где можно отслеживать эволюцию всей истории.
           </p>
+        </div>
+
+        <div class="release-grid">
+          <article class="card release-card release-card-highlight">
+            <span class="tag">Окно релиза</span>
+            <h3>2027-2028</h3>
+            <p>
+              Сейчас это ориентир, а не жёсткое обещание. Проект растёт по
+              эпизодам, и финальный срок зависит от темпа разработки, объёма
+              сцен и того, как будет собираться вся история целиком.
+            </p>
+          </article>
+
+          <article class="card release-card">
+            <span class="tag">Мобильные версии</span>
+            <h3>Android и iPhone</h3>
+            <p>
+              Я хочу попробовать добавить отдельную ссылку или адаптированную
+              версию для Android и, возможно, для iPhone. Пока это только план:
+              сначала нужно понять, как аккуратно перенести интерфейс,
+              управление и подачу без потери атмосферы.
+            </p>
+          </article>
+
+          <article class="card release-card">
+            <span class="tag">Steam</span>
+            <h3>Публикация пока под вопросом</h3>
+            <p>
+              Я не хочу обещать релиз в Steam заранее. Из России разбираться с
+              публикацией, оплатами и всей связанной инфраструктурой непросто, и
+              рабочего понятного пути у меня пока нет. Поэтому Steam сейчас
+              остаётся скорее желанием, чем подтверждённым планом.
+            </p>
+          </article>
+
+          <article class="card release-card">
+            <span class="tag">Если не Steam</span>
+            <h3>Альтернативный способ получения игры</h3>
+            <p>
+              Если публикация в Steam не сложится, игра, скорее всего, будет
+              распространяться отдельно за плату: например, через Boosty,
+              DonationAlerts или похожую площадку. Точный способ появится позже,
+              когда будет понятнее финальная схема релиза.
+            </p>
+          </article>
         </div>
 
         <div class="roadmap-grid">
