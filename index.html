@@ -27,9 +27,16 @@
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
   <div class="page-intro" aria-hidden="true">
+    <div class="page-intro__grid"></div>
+    <div class="page-intro__scanline"></div>
+    <div class="page-intro__noise"></div>
     <div class="page-intro__iris"></div>
     <div class="page-intro__signal"></div>
     <div class="page-intro__panel">
+      <div class="page-intro__meta">
+        <span class="page-intro__chip">Protocol 03</span>
+        <span class="page-intro__chip">Signal Live</span>
+      </div>
       <div class="page-intro__icon-shell">
         <div class="page-intro__ring page-intro__ring-outer"></div>
         <div class="page-intro__ring page-intro__ring-inner"></div>
@@ -37,6 +44,7 @@
       </div>
       <p class="page-intro__label">Вход в архив проекта</p>
       <p class="page-intro__status" data-loading-status>Подготовка материалов...</p>
+      <p class="page-intro__warning" data-loading-warning>Сигнал нестабилен</p>
       <div class="page-intro__bar" aria-hidden="true">
         <span class="page-intro__bar-fill"></span>
       </div>
